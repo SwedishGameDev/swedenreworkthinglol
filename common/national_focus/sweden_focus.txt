@@ -1,0 +1,877 @@
+﻿focus_tree = {
+	id = swedish_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = SWE
+		}
+	}
+	
+	default = no
+	
+	continuous_focus_position = { x = 1000 y = 1000 }
+
+	focus = {
+		id = SWE_defensive_effort
+		icon = GFX_goal_defensive_effort
+		x = 4
+		y = 0
+		#relative_position_id = AST_empower_the_workers
+		
+		available = {
+			NOT = { is_in_faction = yes}
+		}		
+		bypass = {
+
+		}
+		
+		cost = 10
+		#prerequisite = { focus = AST_workers_paradise }
+		mutually_exclusive = { focus = SWE_abandon_neutrality }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 120
+		}
+		ai_will_do = {
+		}
+	}
+
+	focus = {
+		id = SWE_abandon_neutrality
+		icon = GFX_goal_generic_major_war
+		x = 8
+		y = 0
+		#relative_position_id = AST_empower_the_workers
+		
+		available = {
+			NOT = { is_in_faction_with = FIN }
+			NOT = { is_in_faction_with = DEN }
+			NOT = { is_in_faction_with = NOR }
+			NOT = { is_in_faction_with = EST }
+		}		
+		bypass = {
+			OR = {
+			has_government = fascism
+			has_government = communism
+			}
+		}
+		
+		cost = 10
+		#prerequisite = { focus = AST_workers_paradise }
+		mutually_exclusive = { focus = SWE_defensive_effort }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 120
+			add_threat = 2
+			remove_ideas = neutrality_idea
+		}
+		ai_will_do = {
+		}
+	}
+	
+	focus = {
+		id = SWE_rewoke_åland_convention
+		icon = GFX_goal_rewoke_åland
+		x = 5
+		y = 1
+		relative_position_id = SWE_abandon_neutrality
+		
+		available = {
+			NOT = { is_in_faction_with = FIN }
+			NOT = { is_in_faction_with = EST }
+		}		
+		bypass = {
+
+		}
+		
+		cost = 10
+		prerequisite = { focus = SWE_abandon_neutrality }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 120
+			country_event = sweden.1
+			news_event = sweden_news.1
+			
+			145 = {
+				set_demilitarized_zone = no
+				add_claim_by = SWE
+			}
+		}
+		ai_will_do = {
+		}
+	}
+	focus = {
+		id = SWE_fund_gevärsfaktori
+		icon = GFX_goal_fund_gevärsfaktori
+		x = 6
+		y = 1
+		#relative_position_id = SWE_abandon_neutrality
+		
+		available = {
+			#NOT = { is_in_faction_with = FIN }
+		}
+		
+		cost = 10
+		
+		prerequisite = { focus = SWE_abandon_neutrality focus = SWE_defensive_effort}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		
+			add_tech_bonus = {
+			
+				name = infantry_bonus
+				
+				bonus = 2.0
+				
+				uses = 2
+				
+				category = infantry_weapons
+			}
+		}
+	}
+	focus = {
+		id = SWE_contract_scania_vabis
+		icon = GFX_goal_contract_scania_vabis
+		x = 0
+		y = 1
+		relative_position_id = SWE_fund_gevärsfaktori
+		
+		available = {
+			#NOT = { is_in_faction_with = FIN }
+		}		
+		bypass = {
+
+		}
+		
+		cost = 10
+		prerequisite = { focus = SWE_fund_gevärsfaktori}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_bonus
+				bonus = 3.0
+				uses = 1.0
+				technology = motorised_infantry
+			}
+		}
+		ai_will_do = {
+		}
+	}
+	focus = {
+		id = SWE_contract_bofors
+		icon = GFX_goal_contract_bofors
+		x = 0
+		y = 1
+		relative_position_id = SWE_contract_scania_vabis
+		
+		available = {
+			#NOT = { is_in_faction_with = FIN }
+		}		
+		bypass = {
+
+		}
+		
+		cost = 10
+		prerequisite = { focus = SWE_contract_scania_vabis }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 2.0
+				uses = 3
+				category = artillery
+			}
+		}
+		ai_will_do = {
+		}
+	}
+	focus = {
+		id = SWE_contract_landsverk
+		icon = GFX_goal_contract_landsverk
+		x = 0
+		y = 1
+		relative_position_id = SWE_contract_bofors
+		
+		available = {
+			#NOT = { is_in_faction_with = FIN }
+		}		
+		bypass = {
+
+		}
+		
+		cost = 10
+		prerequisite = { focus = SWE_contract_bofors}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = armor_bonus
+				bonus = 3.0
+				uses = 3
+				category = armor
+			}
+		}
+		ai_will_do = {
+		}
+	}
+	
+	focus = {
+		id = SWE_industrial_developement
+		icon = GFX_goal_contract_landsverk
+		x = 15
+		y = 0
+		#relative_position_id = SWE_contract_scania_vabis
+		
+		available = {
+			#NOT = { is_in_faction_with = FIN }
+		}		
+		bypass = {
+
+		}
+		
+		cost = 5
+		#prerequisite = { focus = SWE_contract_scania_vabis}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 1.0
+				uses = 3
+				category = industry
+			}
+		}
+		ai_will_do = {
+		}
+	}
+	
+	# Armament focus
+	
+	focus = {
+		id = SWE_armament_effort
+		icon = GFX_goal_contract_landsverk
+		x = 0
+		y = 1
+		relative_position_id = SWE_industrial_developement
+		
+		available = {
+			#NOT = { is_in_faction_with = FIN }
+		}		
+		bypass = {
+
+		}
+		
+		cost = 5
+		prerequisite = { focus = SWE_industrial_developement}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			141 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+					}
+				}
+		}
+		ai_will_do = {
+		}
+	}
+	focus = {
+		id = SWE_armament_effort_2
+		icon = GFX_goal_contract_landsverk
+		x = 0
+		y = 1
+		relative_position_id = SWE_armament_effort
+		
+		available = {
+			#NOT = { is_in_faction_with = FIN }
+		}		
+		bypass = {
+
+		}
+		
+		cost = 5
+		prerequisite = { focus = SWE_armament_effort}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			138 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+					}
+				}
+		}
+		ai_will_do = {
+		}
+	}
+
+	focus = {
+		id = SWE_armament_effort_3
+		icon = GFX_goal_contract_landsverk
+		x = 0
+		y = 1
+		relative_position_id = SWE_armament_effort_2
+		
+		available = {
+			#NOT = { is_in_faction_with = FIN }
+		}		
+		bypass = {
+
+		}
+		
+		cost = 5
+		prerequisite = { focus = SWE_armament_effort_2}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			138 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+					}
+				}
+		}
+		ai_will_do = {
+		}
+	}
+	focus = {
+		id = SWE_armament_effort_4
+		icon = GFX_goal_contract_landsverk
+		x = 0
+		y = 1
+		relative_position_id = SWE_armament_effort_3
+		
+		available = {
+			#NOT = { is_in_faction_with = FIN }
+		}		
+		bypass = {
+
+		}
+		
+		cost = 5
+		prerequisite = { focus = SWE_armament_effort_3}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			138 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+					}
+				}
+		}
+		ai_will_do = {
+		}
+	}
+	focus = {
+		id = SWE_armament_effort_5
+		icon = GFX_goal_contract_landsverk
+		x = 0
+		y = 1
+		relative_position_id = SWE_armament_effort_4
+		
+		available = {
+			#NOT = { is_in_faction_with = FIN }
+		}		
+		bypass = {
+
+		}
+		
+		cost = 5
+		prerequisite = { focus = SWE_armament_effort_4}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			138 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+					}
+				}
+		}
+		ai_will_do = {
+		}
+	}
+	
+	# Civilian focus
+	
+	focus = {
+		id = SWE_civilian_effort
+		icon = GFX_goal_contract_landsverk
+		x = 2
+		y = 1
+		relative_position_id = SWE_industrial_developement
+		
+		available = {
+			#NOT = { is_in_faction_with = FIN }
+		}		
+		bypass = {
+
+		}
+		
+		cost = 5
+		prerequisite = { focus = SWE_industrial_developement}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			138 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+					}
+				}
+		}
+		ai_will_do = {
+		}
+	}
+
+	focus = {
+		id = SWE_civilian_effort_2
+		icon = GFX_goal_contract_landsverk
+		x = 0
+		y = 1
+		relative_position_id = SWE_civilian_effort
+		
+		available = {
+			#NOT = { is_in_faction_with = FIN }
+		}		
+		bypass = {
+
+		}
+		
+		cost = 5
+		prerequisite = { focus = SWE_civilian_effort}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			140 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+					}
+				}
+		}
+		ai_will_do = {
+		}
+	}
+	
+	focus = {
+			id = SWE_civilian_effort_3
+			icon = GFX_goal_contract_landsverk
+			x = 0
+			y = 1
+			relative_position_id = SWE_civilian_effort_2
+			
+			available = {
+				#NOT = { is_in_faction_with = FIN }
+			}		
+			bypass = {
+
+			}
+			
+			cost = 5
+			prerequisite = { focus = SWE_civilian_effort_2}
+
+			cancel_if_invalid = yes
+			continue_if_invalid = no
+			available_if_capitulated = yes
+
+			completion_reward = {
+				38 = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+						}
+					}
+			}
+			ai_will_do = {
+			}
+		}
+	focus = {
+			id = SWE_civilian_effort_4
+			icon = GFX_goal_contract_landsverk
+			x = 0
+			y = 1
+			relative_position_id = SWE_civilian_effort_3
+			
+			available = {
+				#NOT = { is_in_faction_with = FIN }
+			}		
+			bypass = {
+
+			}
+			
+			cost = 5
+			prerequisite = { focus = SWE_civilian_effort_3}
+
+			cancel_if_invalid = yes
+			continue_if_invalid = no
+			available_if_capitulated = yes
+
+			completion_reward = {
+				666 = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+						}
+					}
+			}
+			ai_will_do = {
+			}
+		}
+	focus = {
+			id = SWE_civilian_effort_5
+			icon = GFX_goal_contract_landsverk
+			x = 0
+			y = 1
+			relative_position_id = SWE_civilian_effort_4
+			
+			available = {
+				#NOT = { is_in_faction_with = FIN }
+			}		
+			bypass = {
+
+			}
+			
+			cost = 5
+			prerequisite = { focus = SWE_civilian_effort_4}
+
+			cancel_if_invalid = yes
+			continue_if_invalid = no
+			available_if_capitulated = yes
+
+			completion_reward = {
+				139 = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+						}
+					}
+			}
+			ai_will_do = {
+			}
+		}
+		
+	# Territorial expansion
+	focus = {
+			id = SWE_puppet_norway
+			icon = GFX_goal_contract_landsverk
+			x = 11
+			y = 3
+			#relative_position_id = SWE_civilian_effort_4
+			
+			available = {
+			}		
+			bypass = {
+
+			}
+			
+			cost = 5
+			prerequisite = { focus = SWE_armament_effort_2}
+			prerequisite = { focus = SWE_return_of_the_caroleans}
+
+			cancel_if_invalid = yes
+			continue_if_invalid = no
+			available_if_capitulated = yes
+
+			completion_reward = {
+				143 = {
+					add_claim_by = SWE
+				}
+			}
+			ai_will_do = {
+			}
+		}
+	focus = {
+			id = SWE_deal_with_danskjävlar
+			icon = GFX_goal_contract_landsverk
+			x = -1
+			y = 2
+			relative_position_id = SWE_puppet_norway
+			
+			available = {
+				NOT = { has_government = democratic }
+			}		
+			bypass = {
+
+			}
+			
+			cost = 5
+			prerequisite = { focus = SWE_puppet_norway focus = SWE_return_of_the_vikings}
+			prerequisite = { focus = SWE_armament_effort_4}
+
+			cancel_if_invalid = yes
+			continue_if_invalid = no
+			available_if_capitulated = yes
+
+			completion_reward = {
+				139 = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+						}
+					}
+			}
+			ai_will_do = {
+			}
+		}
+	focus = {
+			id = SWE_the_new_deal
+			icon = GFX_goal_contract_landsverk
+			x = 0
+			y = 1
+			relative_position_id = SWE_rewoke_åland_convention
+			
+			available = {
+				NOT = { has_government = democratic }
+			}		
+			bypass = {
+
+			}
+			
+			cost = 5
+			prerequisite = { focus = SWE_rewoke_åland_convention}
+
+			cancel_if_invalid = yes
+			continue_if_invalid = no
+			available_if_capitulated = yes
+
+			completion_reward = {
+				139 = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+						}
+					}
+			}
+			ai_will_do = {
+			}
+		}
+		
+	# Political
+		
+	focus = {
+			id = SWE_return_of_the_vikings
+			icon = GFX_goal_contract_landsverk
+			x = 9
+			y = 2
+			#relative_position_id = SWE_civilian_effort_4
+			
+			available = {
+				NOT = { has_government = democratic }
+				
+				NOT = {
+				has_government = democratic
+				}
+			}		
+			bypass = {
+
+			}
+			
+			mutually_exclusive = { focus = SWE_return_of_the_caroleans }
+			
+			cost = 5
+			prerequisite = { focus = SWE_abandon_neutrality}
+
+			cancel_if_invalid = yes
+			continue_if_invalid = no
+			available_if_capitulated = yes
+
+			completion_reward = {
+				139 = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+						}
+					}
+			}
+			ai_will_do = {
+			}
+
+		}
+	focus = {
+			id = SWE_return_of_the_caroleans
+			icon = GFX_goal_contract_landsverk
+			x = 11
+			y = 2
+			#relative_position_id = SWE_civilian_effort_4
+			
+			available = {
+				NOT = { has_government = democratic }
+				
+				NOT = {
+				has_government = democratic
+				}
+			}		
+			bypass = {
+
+			}
+			
+			mutually_exclusive = { focus = SWE_return_of_the_vikings }
+			
+			cost = 5
+			prerequisite = { focus = SWE_rewoke_åland_convention}
+
+			cancel_if_invalid = yes
+			continue_if_invalid = no
+			available_if_capitulated = yes
+
+			completion_reward = {
+				139 = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+						}
+					}
+			}
+			ai_will_do = {
+			}
+		}
+		
+		# Försvarslån
+		
+	focus = {
+			id = SWE_första_försvarslånet
+			icon = GFX_goal_contract_landsverk
+			x = -5
+			y = 1
+			relative_position_id = SWE_defensive_effort
+			
+			available = {
+			
+			}		
+			bypass = {
+
+			}
+			
+			#mutually_exclusive = { focus = SWE_return_of_the_vikings }
+			
+			cost = 5
+			prerequisite = { focus = SWE_defensive_effort}
+
+			cancel_if_invalid = yes
+			continue_if_invalid = no
+			available_if_capitulated = yes
+
+			completion_reward = {
+				add_ideas = { försvarslånet }
+			}
+			ai_will_do = {
+			}
+		}
+		
+	# Research
+	
+	focus = {
+			id = SWE_public_school_funding
+			icon = GFX_goal_contract_landsverk
+			x = 6
+			y = 1
+			relative_position_id = SWE_industrial_developement
+			
+			available = {
+			
+			}		
+			bypass = {
+
+			}
+			
+			#mutually_exclusive = { focus = SWE_return_of_the_vikings }
+			
+			cost = 5
+			prerequisite = { focus = SWE_industrial_developement}
+
+			cancel_if_invalid = yes
+			continue_if_invalid = no
+			available_if_capitulated = no
+
+			completion_reward = {
+				add_ideas = { public_school_funding }
+			}
+			ai_will_do = {
+			}
+		}
+}		

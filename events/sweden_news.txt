@@ -1,0 +1,39 @@
+﻿###########################
+# News Events
+###########################
+
+add_namespace = sweden_news
+
+news_event = {
+	id = sweden_news.1
+	title = "Sweden revokes the Åland Convention"
+	desc = sweden_news.1.d
+	picture = GFX_event_rewoke_åland
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Ok"
+		trigger = {
+			NOT = {
+				TAG = SWE
+				TAG = FIN
+				TAG = EST
+			}
+		}
+	}
+	option = {
+		name = "Äntligen!"
+		trigger = { TAG = SWE }
+	}
+	option = {
+		name = "Bastards."
+		trigger = {
+		TAG = FIN
+		TAG = EST
+		}
+	}
+}
+

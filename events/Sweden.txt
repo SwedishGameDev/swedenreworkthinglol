@@ -1,0 +1,65 @@
+﻿###########################
+# Swedish Events
+###########################
+
+add_namespace = sweden
+
+country_event = {
+	id = sweden.1
+	title = "Rewoke the Åland Convention!"
+	desc = sweden.1.d
+	picture = GFX_event_rewoke_åland
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Äntligen!"
+		ai_chance = { factor = 100 }
+		
+		reverse_add_opinion_modifier = {
+			target = FIN
+			modifier = small_decrease
+		}
+		add_named_threat = {
+			threat = 5
+			name = "Sweden revoked the Åland Convention"
+		}
+		add_stability = 0.05
+		add_political_power = -25
+	}
+}
+
+country_event = {
+	id = sweden.0
+	title = "Welcome to the Sweden Rework mod"
+	desc = sweden.start.d
+	picture = GFX_event_rewoke_åland
+	
+	fire_only_once = yes
+	
+	option = {
+		name = "Äntligen!"
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = {
+	id = sweden.2
+	title = "The new Åland Convention"
+	desc = sweden.2.d
+	picture = GFX_goal_new_åland_convention
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Realise 1809"
+		ai_chance = { factor = 100 }
+		add_named_threat = {
+			threat = -1
+			name = "Sweden realised it's loss"
+		}
+		SWE = {
+			set_cosmetic_tag = WSE
+		}
+	}
+}
